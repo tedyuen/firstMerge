@@ -29,7 +29,9 @@ sudo npm install --save-dev gulp gulp-browserify del gulp-clean-css gulp-concat 
 // angular-animate
 // bootstrap-datepicker
 // jquery-toast-plugin
-sudo npm install --save angular jquery bootstrap angular-route angular-animate bootstrap-datepicker jquery-toast-plugin
+// metismenu
+// jquery-slimscroll
+sudo npm install --save angular jquery bootstrap angular-route angular-animate bootstrap-datepicker jquery-toast-plugin metismenu jquery-slimscroll
 ```
 
 
