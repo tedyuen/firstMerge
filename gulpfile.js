@@ -1,22 +1,22 @@
 const gulp = require('gulp');
 
+var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var browserify = require('gulp-browserify');
 var cleanCSS = require('gulp-clean-css');
 var rename = require('gulp-rename');
-var browserify = require('gulp-browserify');
-var uglify = require('gulp-uglify');
 var del = require('del');
 var obfuscate = require('gulp-obfuscate');
 
 
 var cssArr = [
   './app/source/css/node/jquery.toast.min.css',
-  './app/source/css/node/bootstrap-datepicker.min.css',
   './app/source/css/node/metisMenu.min.css',
   './app/source/css/pixel/animate.css',
   './app/source/css/pixel/style.css',
   './app/source/css/pixel/spinners.css',
   './app/source/css/pixel/colors/default.css',
+  './app/source/css/node/bootstrap-datepicker.min.css',
 ];
 
 var jsArr = [
@@ -42,7 +42,7 @@ gulp.task('minify-css',['concatcss'], function() {
 gulp.task('js-build',function(){
   gulp.src(jsArr)
     .pipe(concat('all.js'))
-    .pipe(gulp.dest('./app/src'))
+    .pipe(gulp.dest('./app/source/js/module'))
     .pipe(rename({suffix: '.min'}))
     .pipe(browserify())
     .pipe(uglify())

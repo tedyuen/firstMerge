@@ -6,10 +6,15 @@ require('bootstrap');
 require('metismenu');
 require('jquery-slimscroll');
 require('jquery-toast-plugin');
-require('bootstrap-datepicker');
 
+//
+var LogUtil = require('./utils/LogUtil');
+var log = new LogUtil(true);//Set can out log.
+
+require('bootstrap-datepicker');
+require('./utils/bootstrap-datepicker');
 jQuery('.mydatepicker').datepicker({
-  language: 'cn',
+  language: 'zh-CN',
   autoclose: true,
   format: "yyyy年mm月dd日",
   todayHighlight: true
