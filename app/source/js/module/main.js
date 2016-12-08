@@ -13,10 +13,21 @@ var log = new LogUtil(true);//Set can out log.
 
 require('bootstrap-datepicker');
 require('./utils/bootstrap-datepicker');
+
+
+var angular = require('angular');
+require('angular-route');
+
 jQuery('.mydatepicker').datepicker({
   language: 'zh-CN',
   autoclose: true,
   format: "yyyy年mm月dd日",
   todayHighlight: true
 });
-// var angular = require('angular');
+
+
+
+
+
+
+
