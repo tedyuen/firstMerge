@@ -10,6 +10,7 @@ var obfuscate = require('gulp-obfuscate');
 
 
 var cssArr = [
+  './app/source/css/node/bootstrap.min.css',
   './app/source/css/node/jquery.toast.min.css',
   './app/source/css/node/metisMenu.min.css',
   './app/source/css/pixel/animate.css',
@@ -22,7 +23,10 @@ var cssArr = [
 var jsArr = [
   './app/source/js/module/main.js',
   './app/source/js/module/custom.js',
-  './app/source/js/module/waves.js'
+  './app/source/js/module/waves.js',
+  './app/source/js/module/controller/*.js',
+  './app/source/js/module/provider/*.js',
+  './app/source/js/module/route.js',
 ];
 
 // css
@@ -32,20 +36,20 @@ gulp.task('concatcss',['nodeModule'],function(){
     .pipe(gulp.dest('./app/source/css'));
 });
 
-gulp.task('minify-css',['concatcss'], function() {
+gulp.task('css',['concatcss'], function() {
   return gulp.src('./app/source/css/all.min.css')
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest('./app/out/css'));
 });
 // css
 
-gulp.task('js-build',function(){
+gulp.task('js',function(){
   gulp.src(jsArr)
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./app/source/js/module'))
     .pipe(rename({suffix: '.min'}))
     .pipe(browserify())
-    .pipe(uglify())
+    // .pipe(uglify({ mangle: false, compress:true, output: { beautify: false } }))
     //.pipe(obfuscate())
     .pipe(gulp.dest('./app/out/js'));
 });
@@ -76,6 +80,6 @@ gulp.task('nodeModule',function(){
 
 });
 
-gulp.task('default',[]);
+gulp.task('default',['js','css']);
 
 
